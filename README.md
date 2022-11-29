@@ -2,7 +2,20 @@
 This example demonstrates how to bind the Winforms SfComboBox's SelectedItem property. 
 You can select the item programmatically in MultiSelectionComboBox control by using SelectedItem or SelectedItems property. 
 
-![Bind SelectedItem](ComboBoxAdv_DataBinding_SelectedItem/Image/Bind%20SelectedItems.png)
+# C#
+          public Form1()
+            {
+                InitializeComponent();
+
+                ViewModel viewModel = new ViewModel();
+
+                sfComboBox1.DataSource = viewModel.Items;
+                sfComboBox1.DisplayMember = "LongName";
+                sfComboBox1.ValueMember = "ShortName";
+
+                sfComboBox1.DataBindings.Add(new Binding("SelectedItem", viewModel,"Selected",true, DataSourceUpdateMode.OnPropertyChanged));
+
+            }
 
 ![Programatically SelectedItem](ComboBoxAdv_DataBinding_SelectedItem/Image/Programatically%20SelectedItem.png)
 
